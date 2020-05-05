@@ -1,0 +1,8 @@
+取消預設會產生的事件
+event.preventDefault()
+
+動態設置屬性
+$('.content p').css('font-size','16px');
+
+中斷當前的動畫，繼續執行下一個動作
+$('.box').stop().slideToggle(3000);

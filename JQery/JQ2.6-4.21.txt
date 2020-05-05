@@ -1,0 +1,41 @@
+JQuery
+
+設置a標籤屬性
+$('a').attr('href','http://www.kiwi.com.tw')
+
+DOM 節點 消失(時間3500ms)
+$('a').slideUp(3500)
+
+出現(時間3500ms)
+$('a').slideDown(3500)
+
+逐漸消失 屬性opacity 1 >>>> 0
+$('a').fadeOut(8000)
+
+逐漸顯示 屬性opacity 0 >>>> 1
+$('a').fadeIn(8000)
+
+顯示與隱藏交替
+$('.title1').toggle();
+
+漸進式顯示與隱藏交替 # 可設定時長
+$('.text').slideToggle(2000)
+
+切換css 類別
+$('.text').toggleClass('active');
+$('.text').addClass('active');
+$('.text').removeClass('active');
+
+設定屬性轉換時間
+(必須在變化前的屬性欄位設定transition時間)
+ex >>> transition: all 3s;
+.text{
+	/*display: none;*/
+	opacity: 0;
+	background-color: green;
+	transition: all 3s;
+}
+.text.active{
+	background-color: #f60;
+	opacity: 1;
+}

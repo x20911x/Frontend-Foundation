@@ -1,0 +1,22 @@
+$(this).find('h3').toggleClass('active').parent().siblings().children().removeClass('active');
+
+觸發事件的DOM
+$(this) 
+
+找尋當前DOM的子元素中的h3 DOM
+$(this).find('h3')
+
+找尋父節點
+.parent()
+
+找尋子節點
+.children()
+
+找尋兄弟節點
+.siblings()
+
+設置監聽DOM元素下所有滿足條件的節點動態綁定事件
+$('.wrap').on('click', 'h1', function(event) {
+      event.preventDefault();
+      alert('有效!')
+  });

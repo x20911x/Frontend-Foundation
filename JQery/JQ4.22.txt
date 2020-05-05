@@ -1,0 +1,31 @@
+隱藏超出範圍的子節點，只顯示元素節點內的內容
+overflow:hidden;
+
+元素滑動的效果
+/*index2.html*/
+.box{
+	width:200px;
+	height: 100px;
+	border: 1px solid blue;
+
+	position: relative;
+}
+.box:hover .title{
+	bottom: 0px
+} 
+.title{
+	background: #000;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	/*margin-left:30px;*/
+	width: 100%;
+
+
+	transition: all 5s;
+	position: absolute;
+	bottom: -40px;
+	
+}
+
+修改事件的效果 可以使用F12 裡的source修改js文件

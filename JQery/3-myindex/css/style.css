@@ -1,0 +1,49 @@
+/*index.html*/
+.text{
+	/*display: none;*/
+	opacity: 0;
+	background-color: green;
+	transition: all 3s;
+}
+.text.active{
+	/*display: block;*/
+	background-color: #f60;
+	opacity: 1;
+}
+
+/*index2.html*/
+/*.box{
+	width:395px;
+	height: 139px;
+	border: 1px solid blue;
+	overflow: hidden;
+	position: relative;
+}
+.box:hover .title{
+	bottom: 0px
+} 
+.title{
+	background: #000;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+
+	width: 100%;
+	transition: all 2s;
+	position: absolute;
+	bottom: -30px;
+}*/
+
+/*index3.html*/
+/*.box{
+	width: 100px;
+	height: 100px;
+	background-color: #f60;
+}
+*/
+
+/*index4.html*/
+.box{
+	height: 500px;
+	background-color: #000;
+}

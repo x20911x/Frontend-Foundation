@@ -1,0 +1,8 @@
+font Awesome
+將套件內的圖片檔變成文字使用
+
+圖片燈箱效果
+https://lokeshdhakar.com/projects/lightbox2/#browser-support
+
+輪播圖
+https://swiperjs.com/
