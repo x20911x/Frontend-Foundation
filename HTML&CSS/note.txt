@@ -1,0 +1,106 @@
+css 優先級
+id >> class >> tag
+
+
+每一個東西都是一個盒子（Box）
+display: block, inline, none, inline-block
+width, height
+padding, margin
+border
+
+已包含border的方式計算設定寬 高 (默認不包含寬高)
+box-sizing: border-box;
+
+
+### inline 元素無法設定寬高 也無法設定上下margin
+
+### inline-block 可以跟其他元素共行，且可以設定寬高
+
+
+相對定位 >>> 設定當前位置的相對位置
+position:relative
+
+
+固定定位 >>> 固定在螢幕上的相對位置
+position:fixed
+
+絕對定位 >>> 往父元素查找到相對定位的元素，依照此元素定位
+position:absolute
+
+螢幕寬度700以上(min-width: 700px)時的動態調整css
+螢幕寬度700以下(max-width: 700px)時的動態調整css
+
+@media screen and (min-width: 700px){
+		  div {
+		  	font-size: 30px;
+		  }
+		  #box1{
+		  	display: none;
+		  }
+		}
+
+自適應螢幕寬度
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+在元素節點前後加東西
+		.box::before{
+			content: 'before';
+		}
+		.box::after{
+			content: 'after';
+		}
+
+將元素加上頁碼的解法
+.box::before{
+	content: attr(data-index);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+特殊符號 ~ +
+
+所有.box 後面的.box
+.box ~ .box{
+	background: green;
+	margin-left: 10px;
+}
+
+.btn 後方的第一個 .box
+.btn + .box{
+	background: #f60;
+}
+
+設置浮動(類似inline-block)
+float
+清除浮動
+clear:both
+
+設置排列方式(類似浮動)
+.wrapper{
+	display: flex;
+	flex-direction: row;
+	background: grey;
+	align-items:center;
+}
+
+元素節點內第一層元素的排列方式
+align-items:center
+align-items:start
+align-items:end
+
+平均分配元素間隙
+1. 兩邊元素靠邊
+justify-content: space-around;
+2. 兩邊元素不靠邊
+justify-content: space-between;
+
+-----------------------------------
+元素放大
+transform:scale(1.4);
+元素平移
+transform:translate(20px); 
+元素旋轉
+transform:rotate(30deg)
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		.yellow{
+			background-color: yellow;
+		}
+		.close{
+			color:#fff;
+			background:#000; 
+
+		}
+		.close:hover{
+			cursor: pointer;
+		}
+
+
+	</style>
+	<script type='text/javascript'>
+		document.addEventListener('DOMContentLoaded',function(){
+			var tests = document.getElementsByClassName('test');
+			var test = document.querySelectorAll('.test>p')
+
+
+
+			for (var i=0; i<test.length;i++){
+				var span = document.createElement('span')
+				span.innerText = 'hello'
+				span.classList.add('yellow')
+				test[i].appendChild(span)
+			}
+
+			document.querySelector('#btn').addEventListener('click', function(){
+				document.querySelector('.test span').classList.toggle('yellow')
+			})
+		})
+		var count = 1
+		document.addEventListener('DOMContentLoaded',function(){
+			document.querySelector('#minus').addEventListener('click', () => {
+				changeCountText(--count)
+			})
+			document.querySelector('#plus').addEventListener('click', () => {
+				changeCountText(++count)
+			})			
+		})
+
+		function changeCountText(count){
+			var countElement = document.querySelector('.count')
+			countElement.innerText = count
+			if (count < 0){
+				countElement.style.color = 'red'
+			} else {
+				countElement.style.color = '#000'
+			}
+		}
+
+		// To do List
+		document.addEventListener('DOMContentLoaded',function(){
+			document.querySelector('#add').addEventListener('click', () => {
+				var text = document.getElementsByClassName('text')[0]
+				var text = document.querySelector('.text')
+
+				var unorder_list = document.getElementsByTagName('ul')[0]
+				var unorder_list = document.querySelector('ul')
+
+				var item = document.createElement('li')
+
+				item.innerHTML = `
+				  ${text.value}
+				  <span class='close' data-text='${text.value}'> X </span>
+				`
+
+				document.querySelector('.list').appendChild(item)
+				text.value=''
+			})
+
+
+			document.querySelector('.list').addEventListener('click',e =>{
+				console.log(e.target)
+				console.log(e.target.classList)
+				// console.log(e.target.classList[0])
+				for(var i=0; i<e.target.classList.length; i++){
+					if(e.target.classList[i] === 'close'){
+						console.log(e.target)
+						console.log(e.target.parentNode)
+						e.target.parentNode.outerHTML=''
+						// document.querySelector('.list').removeChild(e.target.parentNode)
+					}
+				}
+			})
+		})
+
+		// form submit
+		document.addEventListener('DOMContentLoaded', function(){
+			document.querySelector('form').addEventListener('submit', e => {
+				console.log(e)
+				var value = document.querySelector('.name').value
+				if (value === 'name'){
+					// return false
+					e.preventDefault()
+				} return true
+			})
+		});
+
+		function test(){
+			var value = document.querySelector('.name').value
+			if (value === 'name'){
+				return false;
+			} return true;
+		}
+
+	</script>
+</head>
+<body>
+	<div class='test'>
+		<p>123</p>
+		<p>555</p>
+	</div>
+	<div class='test'>
+		<p>0000000</p>
+		<p>00</p>
+	</div>
+	<input type='button' id='btn' value="click me"/>
+	<div class='count'>
+		1
+	</div>
+	<input type='button' id='minus' value="-1"/>
+	<input type='button' id='plus' value="+1"/>
+	
+	<ul class='list'>
+		<li>JS</li>
+		<li>HTML</li>
+	</ul>
+	<input type='text' class='text' placeholder="請輸入to do" />
+	<input type='button' id='add' value="add"/>
+	<form>
+		name:<input type='text' class='name' />
+		<input type='submit' />
+	</form>
+</body>
+</html>
