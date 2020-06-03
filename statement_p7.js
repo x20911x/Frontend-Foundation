@@ -50,7 +50,7 @@ function renderPlainText(data, plays) {
 
   for (let perf of data.performances) {
     // print line for this order
-    result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+    result += `  ${perf.play.name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
   }
 
   result += `Amount owed is ${usd(totalAmount())}\n`;
@@ -59,7 +59,7 @@ function renderPlainText(data, plays) {
 
   function amountFor(aPerformance){
     let result = 0;
-    switch (playFor(aPerformance).type) {
+    switch (aPerformance.play.type) {
     case "tragedy":
       result = 40000;
       if (aPerformance.audience > 30) {
@@ -90,7 +90,7 @@ function renderPlainText(data, plays) {
     // add volume credits
     result += Math.max(aPerformance.audience - 30, 0);
     // add extra credit for every ten comedy attendees
-    if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
+    if ("comedy" === aPerformance.play.type) result += Math.floor(aPerformance.audience / 5);
     return result
   }
 
