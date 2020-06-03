@@ -87,7 +87,7 @@ plays = {
 
   }
 
-// console.log(invoice[0].performances)
+// console.log(invoice[0].aPerformanceormances)
 // console.log(plays)
 console.log(statement(invoice, plays))
 
