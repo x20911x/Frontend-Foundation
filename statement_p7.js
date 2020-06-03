@@ -34,18 +34,16 @@ plays = {
                             minimumFractionDigits: 2 }).format;
   
     for (let perf of invoice[0].performances) {
-      const play = plays[perf.playID];
 
-      let thisAmount = amountFor(perf,play)
+      let thisAmount = amountFor(perf,playFor(perf))
       
-  
       // add volume credits
       volumeCredits += Math.max(perf.audience - 30, 0);
       // add extra credit for every ten comedy attendees
-      if ("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+      if ("comedy" === playFor(perf)) volumeCredits += Math.floor(perf.audience / 5);
   
       // print line for this order
-      result += `  ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+      result += `  ${playFor(perf).name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
       totalAmount += thisAmount;
     }
     result += `Amount owed is ${format(totalAmount/100)}\n`;
@@ -83,6 +81,9 @@ plays = {
       return result
     }
 
+    function playFor(aPerformance){
+      return plays[aPerformance.playID]
+    }
 
 
   }
