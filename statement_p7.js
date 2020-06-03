@@ -39,7 +39,7 @@ plays = {
     }
 
 
-    let volumeCredits = totalVolumeCredits();
+    // let volumeCredits = totalVolumeCredits();
 
     result += `Amount owed is ${usd(totalAmount)}\n`;
     result += `You earned ${totalVolumeCredits()} credits\n`;
@@ -76,9 +76,11 @@ plays = {
       return result
     }
 
+
     function playFor(aPerformance){
       return plays[aPerformance.playID]
     }
+
 
     function volumeCreditsFor(aPerformance){
       let result = 0;
@@ -89,11 +91,13 @@ plays = {
       return result
     }
 
+
     function usd(aNumber){
       return new Intl.NumberFormat("en-US",
       { style: "currency", currency: "USD",
         minimumFractionDigits: 2 }).format(aNumber/100)
     }
+
 
     function totalVolumeCredits(){
       let volumeCredits = 0;
@@ -102,6 +106,17 @@ plays = {
       }
       return volumeCredits;
     }
+
+
+    function appleSauce(){
+      let totalAmount = 0;
+      for (let perf of invoice[0].performances) {
+        totalAmount += amountFor(perf);
+      }
+      return totalAmount
+    }
+
+
   }
 
 
