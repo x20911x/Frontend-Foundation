@@ -27,12 +27,24 @@ plays = {
 function statement (invoice, plays){
   const statementData = {};
   statementData.customer = invoice[0].customer
-  statementData.performances = invoice[0].performances
+  statementData.performances = invoice[0].performances.map(enrichPerformance);
   return renderPlainText(statementData, plays)
+
+
+  function enrichPerformance(aPerformance) {
+    const result = Object.assign({}, aPerformance);
+    result.play = playFor(result)
+    return result;
+  }
+
+  function playFor(aPerformance){
+    return plays[aPerformance.playID]
+  }
 }
 
+
+
 function renderPlainText(data, plays) {
-  
   
   let result = `Statement for ${data.customer}\n`;
 
@@ -45,10 +57,6 @@ function renderPlainText(data, plays) {
   result += `You earned ${totalVolumeCredits()} credits\n`;
   return result;
 
-
-
-
-  
   function amountFor(aPerformance){
     let result = 0;
     switch (playFor(aPerformance).type) {
